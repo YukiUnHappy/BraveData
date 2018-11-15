@@ -1,0 +1,40 @@
+.no-filter-control {
+    height: 34px;
+}
+
+.filter-control {
+    margin: 0 2px 2px 2px;
+}
+
+.filter-control .form-control {
+    height: 25px;
+}
+
+.a1 {
+    font-weight: bold;
+    color: blue;
+}
+
+.a2 {
+    font-weight: bold;
+    color: red;
+}
+
+.a3 {
+    font-weight: bold;
+    color: green;
+}
+
+.a4 {
+    font-weight: bold;
+    color: purple;
+}
+
+.a5 {
+    font-weight: bold;
+    color: gray;
+}
+
+.container {
+    padding-bottom: 20px;
+}
