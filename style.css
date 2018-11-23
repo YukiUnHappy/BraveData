@@ -43,10 +43,14 @@
     padding: 2px 8px;
 }
 
-img, .equip_icon {
+img.equip_icon {
     width: 40px;
 }
 
-img, .hero_icon {
+img.hero_icon {
     width: 51px;
+}
+
+.hero-container {
+    max-width: 1400px;
 }

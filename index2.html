@@ -33,7 +33,7 @@
         </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid hero-container">
         <table id="table" class="table-responsive" data-sort-name="id" data-toggle="table" data-search="true" data-filter-control="true"
             data-filter-show-clear="true" data-click-to-select="true" data-show-multi-sort="true" data-url="./hero.json">
             <thead>
@@ -41,16 +41,18 @@
                     <th data-field="icon" data-formatter="icon_formatter">Icon</th>
                     <th data-field="id" data-align="center" data-filter-control="input" data-sortable="true">ID</th>
                     <th data-field="attr" data-align="center" data-filter-control="select" data-sortable="true">Attribute</th>
-                    <th data-field="name" data-formatter="name_formatter" data-width="22%" data-filter-control="input" data-sortable="true">Name</th>
-                    <th data-field="lvU" data-align="center" data-sortable="true">Lv</th>
-                    <th data-field="hpU" data-sortable="true">HP</th>
-                    <th data-field="atkU" data-sortable="true">Atk</th>
-                    <th data-field="defU" data-sortable="true">Def</th>
-                    <th data-field="spdU" data-sortable="true">AtkSpd</th>
-                    <th data-field="atkrange" data-sortable="true">AtkRange</th>
-                    <th data-field="atkscale" data-sortable="true">AtkScale</th>
-                    <th data-field="move" data-sortable="true">MoveSpd</th>
-                    <th data-field="crit" data-sortable="true" data-formatter="percent_formatter">Crit</th>
+                    <th data-field="name" data-formatter="name_formatter" data-width="30%" data-filter-control="input" data-sortable="true">Name</th>
+                    <th data-field="lvU" data-width="10px" data-align="center" data-sortable="true">Lv</th>
+                    <th data-field="hpU" data-width="10px" data-sortable="true">HP</th>
+                    <th data-field="atkU" data-width="10px" data-sortable="true">Atk</th>
+                    <th data-field="defU" data-width="10px" data-sortable="true">Def</th>
+                    <th data-field="spdU" data-width="10px" data-sortable="true">AtkSpd</th>
+                    <th data-field="atkrange" data-width="10px" data-sortable="true">AtkRange</th>
+                    <th data-field="atkscale" data-width="10px" data-sortable="true">AtkScale</th>
+                    <th data-field="move" data-width="10px" data-sortable="true">MoveSpd</th>
+                    <th data-field="crit" data-width="10px" data-sortable="true" data-formatter="percent_formatter">Crit</th>
+                    <th data-field="artist" data-width="10%" data-sortable="true" data-filter-control="select">Artist</th>
+                    <th data-field="basename" data-sortable="true">BaseName</th>
                 </tr>
             </thead>
         </table>
@@ -64,8 +66,8 @@
             'サンディカ': 'a5'
         };
 
-        function name_formatter (value) {
-            return `<a target="_blank" href="http://bravegirl2.wiki.fc2.com/wiki/${value.replace(/《.+?》/,'').replace(/\[.+?\]/,'').replace('+','')}">${value}</a>`;
+        function name_formatter (value, row) {
+            return `<a target="_blank" href="http://bravegirl2.wiki.fc2.com/wiki/${row.basename}">${value}</a>`;
         }
         function icon_formatter(value, row, index, field) {
             if (value == undefined)
@@ -79,7 +81,7 @@
         }
 
         $('table').on('post-body.bs.table', (data) => {
-            $(`table tr td:nth-child(3)`).each((index, elem) => {
+            $('table tr td:nth-child(3)').each((index, elem) => {
                 $(elem).addClass(att[elem.innerText]);
             });
             $('.hero_icon').lazyload({threshold: 1000});
