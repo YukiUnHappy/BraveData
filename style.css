@@ -38,3 +38,15 @@
 .container {
     padding-bottom: 20px;
 }
+
+.form-control {
+    padding: 2px 8px;
+}
+
+img#equip_icon {
+    width: 40px;
+}
+
+img#hero_icon {
+    width: 51px;
+}
