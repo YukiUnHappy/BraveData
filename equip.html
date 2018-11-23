@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css" />
     <link rel="stylesheet" href="style.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
@@ -59,7 +60,7 @@
     <script>
         function icon_formatter(value, row, index, field) {
             if (value != undefined)
-                return `<img id="equip_icon" src="icon/item/Item1_e${value}.png">`;
+                return `<img class="equip_icon" src="icon/item/Item1_e0001.png" data-original="icon/item/Item1_${value}.png">`;
             return value;
         }
         function percent_formatter (value) {
@@ -72,6 +73,7 @@
             $('table td:contains("-")').each((index, elem) => {
                 $(elem).addClass('a2');
             });
+            $('.equip_icon').lazyload({threshold: 200});
         });
     </script>
 </body>
