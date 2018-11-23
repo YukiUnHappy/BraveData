@@ -38,10 +38,10 @@
             data-filter-show-clear="true" data-click-to-select="true" data-show-multi-sort="true" data-url="./hero.json">
             <thead>
                 <tr>
-                    <th data-field="icon" data-formatter="icon_formatter" >Icon</th>
+                    <th data-field="icon" data-formatter="icon_formatter">Icon</th>
                     <th data-field="id" data-align="center" data-filter-control="input" data-sortable="true">ID</th>
                     <th data-field="attr" data-align="center" data-filter-control="select" data-sortable="true">Attribute</th>
-                    <th data-field="name" data-width="22%" data-filter-control="input" data-sortable="true">Name</th>
+                    <th data-field="name" data-formatter="name_formatter" data-width="22%" data-filter-control="input" data-sortable="true">Name</th>
                     <th data-field="lv" data-align="center" data-sortable="true">Lv</th>
                     <th data-field="hp" data-sortable="true">HP</th>
                     <th data-field="atk" data-sortable="true">Atk</th>
@@ -64,10 +64,13 @@
             'サンディカ': 'a5'
         };
 
-        function icon_formatter(value, row, index, field) {
-            if (row.id == undefined)
+        function name_formatter (value) {
+            return `<a target="_blank" href="http://bravegirl2.wiki.fc2.com/wiki/${value.replace(/《.+?》/,'').replace(/\[.+?\]/,'').replace('+','')}">${value}</a>`;
+        }
+        function icon_formatter (value) {
+            if (value == undefined)
                 return value;
-            return `<img class="hero_icon" src="icon/hero/Hero1_1001.png" data-original="icon/hero/Hero${Math.round(row.id/30000)==1?2:1}_${row.id}.png">`;
+            return `<img class="hero_icon" src="icon/hero/Hero1_1001.png" data-original="icon/hero/${value}.png">`;
         }
         function percent_formatter (value) {
             if(value != 0)
@@ -79,7 +82,7 @@
             $(`table tr td:nth-child(3)`).each((index, elem) => {
                 $(elem).addClass(att[elem.innerText]);
             });
-            $('.hero_icon').lazyload({threshold: 400});
+            $('.hero_icon').lazyload({threshold: 1000});
         });
     </script>
 </body>

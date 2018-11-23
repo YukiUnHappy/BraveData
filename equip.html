@@ -38,7 +38,7 @@
             data-filter-show-clear="true" data-click-to-select="true" data-show-multi-sort="true" data-url="./equip.json">
             <thead>
                 <tr>
-                    <th data-field="icon" data-formatter="icon_formatter" >Icon</th>
+                    <th data-field="icon" data-formatter="icon_formatter">Icon</th>
                     <th data-field="name" data-width="500px" data-filter-control="input" data-sortable="true">Name</th>
                     <th data-field="rank" data-align="center" data-filter-control="select" data-sortable="true">Rank</th>
                     <th data-field="lv" data-align="center" data-sortable="true">Lv</th>
@@ -58,10 +58,10 @@
         </table>
     </div>
     <script>
-        function icon_formatter(value, row, index, field) {
+        function icon_formatter (value) {
             if (value == undefined)
                 return value;
-            return `<img class="equip_icon" src="icon/item/Item1_e0001.png" data-original="icon/item/Item1_${value}.png">`;
+            return `<img class="equip_icon" src="icon/item/Item1_e0001.png" data-original="icon/item/${value}.png">`;
         }
         function percent_formatter (value) {
             if(value != 0)
@@ -73,7 +73,7 @@
             $('table td:contains("-")').each((index, elem) => {
                 $(elem).addClass('a2');
             });
-            $('.equip_icon').lazyload({threshold: 400});
+            $('.equip_icon').lazyload({threshold: 1000});
         });
     </script>
 </body>
