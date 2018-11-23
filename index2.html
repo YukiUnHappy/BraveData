@@ -65,7 +65,7 @@
 
         function icon_formatter(value, row, index, field) {
             if (row.id != undefined)
-                return `<img id="hero_icon" src="icon/hero/hero${Math.round(row.id/30000)==1?2:1}_${row.id}.png">`;
+                return `<img id="hero_icon" src="icon/hero/Hero${Math.round(row.id/30000)==1?2:1}_${row.id}.png">`;
             return value;
         }
         function percent_formatter (value) {
