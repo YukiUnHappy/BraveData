@@ -57,17 +57,17 @@
     </div>
     <script>
         var att = {
-            'ヴァーミル': 'a1',
-            'ブラン': 'a2',
+            'ブラン': 'a1',
+            'ヴァーミル': 'a2',
             'ジェイド': 'a3',
-            'サンディカ': 'a4',
-            'デモニア': 'a5'
+            'デモニア': 'a4',
+            'サンディカ': 'a5'
         };
 
         function icon_formatter(value, row, index, field) {
-            if (row.id != undefined)
-                return `<img class="hero_icon" src="icon/hero/Hero1_1001.png" data-original="icon/hero/Hero${Math.round(row.id/30000)==1?2:1}_${row.id}.png">`;
-            return value;
+            if (row.id == undefined)
+                return value;
+            return `<img class="hero_icon" src="icon/hero/Hero1_1001.png" data-original="icon/hero/Hero${Math.round(row.id/30000)==1?2:1}_${row.id}.png">`;
         }
         function percent_formatter (value) {
             if(value != 0)
@@ -79,7 +79,7 @@
             $(`table tr td:nth-child(3)`).each((index, elem) => {
                 $(elem).addClass(att[elem.innerText]);
             });
-            $('.hero_icon').lazyload({threshold: 200});
+            $('.hero_icon').lazyload({threshold: 400});
         });
     </script>
 </body>

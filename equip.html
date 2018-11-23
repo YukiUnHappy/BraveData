@@ -59,9 +59,9 @@
     </div>
     <script>
         function icon_formatter(value, row, index, field) {
-            if (value != undefined)
-                return `<img class="equip_icon" src="icon/item/Item1_e0001.png" data-original="icon/item/Item1_${value}.png">`;
-            return value;
+            if (value == undefined)
+                return value;
+            return `<img class="equip_icon" src="icon/item/Item1_e0001.png" data-original="icon/item/Item1_${value}.png">`;
         }
         function percent_formatter (value) {
             if(value != 0)
@@ -73,7 +73,7 @@
             $('table td:contains("-")').each((index, elem) => {
                 $(elem).addClass('a2');
             });
-            $('.equip_icon').lazyload({threshold: 200});
+            $('.equip_icon').lazyload({threshold: 400});
         });
     </script>
 </body>
